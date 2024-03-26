@@ -21,6 +21,7 @@ const WeatherInfo: React.FC<WeatherInfoProps> = ({ cityName, temperature, humidi
       </View>
       <View style={styles.weatherIcon}>
         <Icon name={isSunny ? 'weather-sunny' : 'weather-cloudy'} size={50} color={isSunny ? '#FBC02D' : "#c9c9c9"} />
+        <Text style={styles.weatherIconText}>{isSunny ? 'clear sky' : "overcast clouds"}</Text>
       </View>
     </View>
   );
@@ -35,6 +36,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start'
   },
+  cityDetails: {
+    marginRight: 30
+  },
   cityName: {
     fontSize: 18,
     marginBottom: 5,
@@ -44,7 +48,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   weatherIcon: {
+    alignItems: 'center'
+  },
+  weatherIconText: {
+    fontSize: 18,
     marginBottom: 5,
+    color: "#FFF",
+    marginTop: 20
   },
   temperature: {
     fontSize: 40,
