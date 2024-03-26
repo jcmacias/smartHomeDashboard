@@ -1,0 +1,13 @@
+current directory: /Users/glenda/Documents/work/Tests/dashboardApp/vendor/bundle/ruby/2.7.0/gems/json-2.7.1/ext/json
+/Users/glenda/.rbenv/versions/2.7.3/bin/ruby -I /Users/glenda/.rbenv/versions/2.7.3/lib/ruby/2.7.0 -r ./siteconf20240326-57488-qfatwm.rb extconf.rb
+creating Makefile
+
+current directory: /Users/glenda/Documents/work/Tests/dashboardApp/vendor/bundle/ruby/2.7.0/gems/json-2.7.1/ext/json
+make "DESTDIR=" clean
+
+current directory: /Users/glenda/Documents/work/Tests/dashboardApp/vendor/bundle/ruby/2.7.0/gems/json-2.7.1/ext/json
+make "DESTDIR="
+make: Nothing to be done for `all'.
+
+current directory: /Users/glenda/Documents/work/Tests/dashboardApp/vendor/bundle/ruby/2.7.0/gems/json-2.7.1/ext/json
+make "DESTDIR=" install
