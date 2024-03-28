@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Header from '../Components/Header';
 import WeatherInfo from '../Components/WeatherInfo';
@@ -15,15 +15,24 @@ const devices: Array<{ id: number, name: string, status: boolean }> = Array(
 
 
 const DashboardScreen: React.FC = () => {
+  const [devicesState, setDevicesState] = useState(devices);
+
+  const updateDeviceStatus = (deviceId: number, newStatus: boolean) => {
+    setDevicesState(prevDevices =>
+      prevDevices.map(device =>
+        device.id === deviceId ? { ...device, status: newStatus } : device
+      )
+    );
+  };
   return (
     <View style={styles.container}>
       <Header title="Smart Home" />
-      <WeatherInfo cityName='Miami' temperature={80} humidity={90} isSunny={true} />
+      <WeatherInfo cityName='Miami' temperature={30} humidity={90} isSunny={false} />
       <FavoriteScenesSection />
       <View style={styles.scenesContainer}></View>
       <FavoriteDevicesSection />
       <View style={styles.devicesContainer}>
-        {devices?.map(device => <DeviceCard isOn={device.status} roomName={device.name} />)}
+        {devicesState?.map(device => <DeviceCard device={device} updateDeviceStatus={updateDeviceStatus} />)}
       </View>
     </View>
   );

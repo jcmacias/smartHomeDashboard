@@ -1,21 +1,27 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-interface DeviceCardProps {
-  isOn: boolean;
-  roomName: string;
+interface Device {
+  id: number;
+  name: string;
+  status: boolean;
 }
 
-const DeviceCard: React.FC<DeviceCardProps> = ({ isOn, roomName }) => {
+interface DeviceCardProps {
+  device: Device;
+  updateDeviceStatus: (deviceId: number, newStatus: boolean) => void;
+}
+
+const DeviceCard: React.FC<DeviceCardProps> = ({ device, updateDeviceStatus }) => {
   return (
-    <View style={styles.container}>
+    <TouchableOpacity onPress={() => updateDeviceStatus(device.id, !device.status)} style={styles.container}>
       <View style={styles.iconContainer}>
-        <Icon name="lightbulb-o" size={40} color={isOn ? '#FFF' : '#A9A9A9'} />
-        <Text style={styles.statusText}>{isOn ? 'On' : 'Off'}</Text>
+        <Icon name="lightbulb-o" size={40} color={device?.status ? '#FFF' : '#A9A9A9'} />
+        <Text style={styles.statusText}>{device?.status ? 'On' : 'Off'}</Text>
       </View>
-      <Text style={styles.roomName} numberOfLines={2}>{roomName}</Text>
-    </View>
+      <Text style={styles.roomName} numberOfLines={2}>{device?.name}</Text>
+    </TouchableOpacity>
   );
 };
 
